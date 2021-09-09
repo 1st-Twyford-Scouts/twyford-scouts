@@ -12,5 +12,7 @@ module.exports = {
       },
     },
     "gatsby-plugin-gatsby-cloud",
+    "gatsby-plugin-sharp",
+    "gatsby-plugin-image"
   ],
 };
