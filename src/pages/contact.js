@@ -14,9 +14,7 @@ const ContactPage = () => {
             fieldValue
           }
         }
-      }
-            
-          `)
+      }`)
   return (
     <Layout pageTitle="Contact Us">
         {

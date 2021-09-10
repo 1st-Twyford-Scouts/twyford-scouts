@@ -1,15 +1,38 @@
 import * as React from 'react'
 import Layout from '../components/layout'
+import NewsStory from '../components/newsStory'
 import { StaticImage } from 'gatsby-plugin-image'
+import { useStaticQuery, graphql } from 'gatsby'
 
 const IndexPage = () => {
+  const news = useStaticQuery(graphql`
+  query MyQuery {
+    allContentfulNewsStory(
+      filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: "scouts"}}}}}
+      sort: {order: DESC, fields: createdAt}
+      limit: 10
+    ) {
+      nodes {
+        title
+        createdAt
+        mainBody {
+          raw
+        }
+      }
+    }
+  }`)
+  
   return (
     <Layout pageTitle="Home Page">
-      <p>I'm making this by following the Gatsby Tutorial.</p>
-      <StaticImage
-        alt="Clifford, a reddish-brown pitbull, posing on a couch and looking stoically at the camera"
-        src="../images/Scouts1stTwyfordLinearPurple60px.png"
-      />
+      <h1>News</h1>
+      {
+        news.allContentfulNewsStory.nodes.map(node =>(
+          <div>
+            <NewsStory newsStory={node}></NewsStory>
+          </div>                
+            ))
+        }
+
     </Layout>
   )
 }
