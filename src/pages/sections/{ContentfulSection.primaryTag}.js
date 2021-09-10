@@ -33,6 +33,8 @@ query ($primaryTag: String) {
     ) {
       nodes {
         updatedAt
+        category
+        title
         content {
           raw
         }
