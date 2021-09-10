@@ -33,7 +33,7 @@ const Notice = ({ notice }) => {
     return (
     <div className={`${categoryClass} ${entireNotice}`}>
       <div className={title}>{ notice.title || (notice.category == 'thisweek' ? 'Scouts This Week' : '')}</div>
-      <div className={updatedAt}>{notice.updatedAt}</div>
+      <div className={updatedAt}>{new Date(notice.updatedAt).toLocaleString()}</div>
       {
         renderRichText(notice.content, options)
       }
