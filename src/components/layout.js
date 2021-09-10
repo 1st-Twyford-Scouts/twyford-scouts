@@ -35,23 +35,19 @@ const Layout = ({ pageTitle, children }) => {
         <StaticImage className={topBarStaticElement}
           alt="1st Twyford Scouts"
           src="../images/Scouts1stTwyfordLinearWhite96px.png"/>
-          <div className={navLinkItem}>
-            <Link to="/" className={navLinkText}>
-              Home
+            <Link to="/" className={navLinkItem}>
+              <div className={navLinkText}>Home</div>
             </Link>
-          </div>
           {
             sections.allContentfulSection.nodes.map(node => (
-                <div className={navLinkItem} key = {node.name}>
-                    <Link to={"/sections/" + node.primaryTag} className={navLinkText}>
-                    {node.name}
+                    <Link to={"/sections/" + node.primaryTag} className={navLinkItem}>
+                    <div className={navLinkText}>{node.name}</div>
                     </Link>
-                </div>
             ))              
           }
           <div className={navLinkItem}>
-            <Link to="/contact" className={navLinkText}>
-              Contact Us
+            <Link to="/contact" className={navLinkItem}>
+            <div className={navLinkText}>Contact Us</div>
             </Link>
           </div>
       </nav>

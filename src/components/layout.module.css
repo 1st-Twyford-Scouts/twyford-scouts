@@ -15,11 +15,14 @@
     height: 100%;
   }
   .nav-link-item {
-    padding-left:2%;
-    padding-right:2%;
+    padding-left:1%;
+    padding-right:1%;
+    margin-left:1%;
+    margin-right: 1%;
     display: inline-block;
-    vertical-align: middle;
     display: flex;
+    color: white;
+    flex-shrink: 0;
   }
 
   .nav-link-item:hover{
@@ -28,7 +31,8 @@
 
   .nav-link-text {
     color: white;
-    margin:auto;
+    margin-top:auto;
+    margin-bottom:auto;
   }
 
   .topBar {
