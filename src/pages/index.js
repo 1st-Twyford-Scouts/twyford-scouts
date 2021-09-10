@@ -8,7 +8,7 @@ const IndexPage = () => {
   const news = useStaticQuery(graphql`
   query MyQuery {
     allContentfulNewsStory(
-      filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: "scouts"}}}}}
+      filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: "group"}}}}}
       sort: {order: DESC, fields: createdAt}
       limit: 10
     ) {

@@ -16,6 +16,7 @@ const Layout = ({ pageTitle, children }) => {
         allContentfulSection {
           nodes {
             name
+            primaryTag
             metadata {
               tags {
                 name
@@ -24,8 +25,6 @@ const Layout = ({ pageTitle, children }) => {
           }
         }
       }`)
-
-      console.log(sections)
 
       return (
     <div className={container}>
@@ -48,7 +47,7 @@ const Layout = ({ pageTitle, children }) => {
           {
             sections.allContentfulSection.nodes.map(node => (
                 <li  className={navLinkItem} key = {node.name}>
-                    <Link to={"/" + node.name} class={navLinkText}>
+                    <Link to={"/sections/" + node.primaryTag} class={navLinkText}>
                     {node.name}
                     </Link>
                 </li>
