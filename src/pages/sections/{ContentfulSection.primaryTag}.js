@@ -1,15 +1,21 @@
 import * as React from 'react'
 import Layout from '../../components/layout'
 import { useStaticQuery, graphql } from 'gatsby'
+import { renderRichText} from "gatsby-source-contentful/rich-text"
 import NewsStory from '../../components/newsStory'
 import Notice from '../../components/notice'
 const SectionPage = ({data, pageContext}) => {
-  console.log(pageContext)
-  console.log(data)
+
+  const options = {
+  }
 
   return (
     <Layout pageTitle={data.contentfulSection.name + " Section"}>
       <div>
+      {
+        data.contentfulSection.intro && renderRichText(data.contentfulSection.intro, options)
+      }
+
       <h1>Notices</h1>
       {
         data.allContentfulNotice.nodes.map(node =>(<Notice notice={node}></Notice>))
@@ -27,6 +33,9 @@ export const query = graphql`
 query ($primaryTag: String) {
     contentfulSection(primaryTag: {eq: $primaryTag}) {
       name
+      intro {
+        raw
+      }
     }
     allContentfulNotice(
       filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: $primaryTag}}}}}
