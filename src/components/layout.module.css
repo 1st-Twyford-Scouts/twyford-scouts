@@ -1,6 +1,5 @@
 .container {
     margin: auto;
-    max-width: 500px;
     font-family: sans-serif;
   }
 
@@ -8,13 +7,42 @@
     color: rebeccapurple;
   }
   .nav-links {
-    display: flex;
     list-style: none;
     padding-left: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    height: 100%;
   }
   .nav-link-item {
-    padding-right: 2rem;
+    padding-left:2%;
+    padding-right:2%;
+    display: inline-block;
+    vertical-align: middle;
+    display: flex;
   }
+
+  .nav-link-item:hover{
+    background-color:#00a794;
+  }
+
   .nav-link-text {
-    color: black;
+    color: white;
+    margin:auto;
   }
+
+  .topBar {
+    background-color: #7413DC;
+    display: flex;
+    justify-content: center;
+
+  }
+  .topBarStaticElement {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .content {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+

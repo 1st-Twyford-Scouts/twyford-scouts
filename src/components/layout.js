@@ -3,10 +3,13 @@ import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import {
   container,
+  topBar,
+  topBarStaticElement,
   heading,
   navLinks,
   navLinkItem,
-  navLinkText
+  navLinkText,
+  content
 } from './layout.module.css'
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -28,34 +31,31 @@ const Layout = ({ pageTitle, children }) => {
 
       return (
     <div className={container}>
-      <title>{pageTitle}</title>
-      <nav>
-      <StaticImage
-        alt="Clifford, a reddish-brown pitbull, posing on a couch and looking stoically at the camera"
-        src="../images/Scouts1stTwyfordLinearPurple60px.png"/>
-        <ul className={navLinks}>
-          <li className={navLinkItem}>
+      <nav className={topBar}>
+        <StaticImage className={topBarStaticElement}
+          alt="1st Twyford Scouts"
+          src="../images/Scouts1stTwyfordLinearWhite96px.png"/>
+          <div className={navLinkItem}>
             <Link to="/" className={navLinkText}>
               Home
             </Link>
-          </li>
-          <li className={navLinkItem}>
+          </div>
+          {
+            sections.allContentfulSection.nodes.map(node => (
+                <div className={navLinkItem} key = {node.name}>
+                    <Link to={"/sections/" + node.primaryTag} className={navLinkText}>
+                    {node.name}
+                    </Link>
+                </div>
+            ))              
+          }
+          <div className={navLinkItem}>
             <Link to="/contact" className={navLinkText}>
               Contact Us
             </Link>
-          </li>
-          {
-            sections.allContentfulSection.nodes.map(node => (
-                <li  className={navLinkItem} key = {node.name}>
-                    <Link to={"/sections/" + node.primaryTag} class={navLinkText}>
-                    {node.name}
-                    </Link>
-                </li>
-            ))              
-          }
-        </ul>
+          </div>
       </nav>
-      <main>
+      <main className={content}>
         <h1 className={heading}>{pageTitle}</h1>
         {children}
       </main>
