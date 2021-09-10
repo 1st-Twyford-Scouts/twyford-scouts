@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
+import { StaticImage } from 'gatsby-plugin-image'
 import {
   container,
   heading,
@@ -13,6 +14,10 @@ const Layout = ({ pageTitle, children }) => {
     <div className={container}>
       <title>{pageTitle}</title>
       <nav>
+      <StaticImage
+        alt="Clifford, a reddish-brown pitbull, posing on a couch and looking stoically at the camera"
+        src="../images/Scouts1stTwyfordLinearPurple60px.png"
+      />
         <ul className={navLinks}>
           <li className={navLinkItem}>
             <Link to="/" className={navLinkText}>
@@ -20,8 +25,8 @@ const Layout = ({ pageTitle, children }) => {
             </Link>
           </li>
           <li className={navLinkItem}>
-            <Link to="/about" className={navLinkText}>
-              About
+            <Link to="/contact" className={navLinkText}>
+              Contact Us
             </Link>
           </li>
         </ul>
