@@ -1,0 +1,24 @@
+.story {
+    margin-top: 2%;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding:15px;
+}
+
+.content{    
+}
+
+.title {
+    margin: auto;
+    display: inline-block;
+    font-weight: bold;
+    font-size: large;
+  }
+
+.createdAt {
+    float:right;
+    text-align: right;
+    margin: auto;
+    color: thistle;
+  }
+

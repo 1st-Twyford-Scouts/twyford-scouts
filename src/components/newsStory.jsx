@@ -1,11 +1,11 @@
 import * as React from 'react'
 import {
-  container,
-  heading,
-  navLinks,
-  navLinkItem,
-  navLinkText
-} from './layout.module.css'
+  createdAt,
+  title,
+  story,
+  content
+} from './newsStory.module.css'
+
 import { renderRichText} from "gatsby-source-contentful/rich-text"
 
 const NewsStory = ({ newsStory }) => {
@@ -13,12 +13,14 @@ const NewsStory = ({ newsStory }) => {
     }
 
     return (
-    <div>
-      <div class='title'>{newsStory.title}</div>
-      <div class='createdAt'>{newsStory.createdAt}</div>
+    <div className={story}>
+      <div className={title}>{newsStory.title}</div>
+      <div className={createdAt}>{new Date(newsStory.createdAt).toLocaleString()}</div>
+      <div className={content}>
       {
         renderRichText(newsStory.mainBody, options)
       }
+      </div>
     </div>
   )
 }
