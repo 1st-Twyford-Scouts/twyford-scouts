@@ -19,6 +19,8 @@ const NewsPage = ({data}) => {
 
   return (
     <Layout pageTitle={data.contentfulNewsStory.title}>
+      <GatsbyImage alt={data.contentfulNewsStory.title} image={getImage(data.contentfulNewsStory.thumbNailImage)}/>
+      <h1>{data.contentfulNewsStory.title}</h1>
       <div>
       {
           data.contentfulNewsStory.mainBody && renderRichText(data.contentfulNewsStory.mainBody, options)
