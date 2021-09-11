@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
+import './layout.css'
 import { StaticImage, GatsbyImage, getImage } from 'gatsby-plugin-image'
 import {
   container,
@@ -41,12 +42,11 @@ const Layout = ({ children }) => {
       return (
     <div className={container}>
       <nav className={topBar}>
-        <StaticImage className={topBarStaticElement}
-          alt="1st Twyford Scouts"
-          src="../images/Scouts1stTwyfordLinearWhite96px.png"/>
-            <Link to="/" className={navLinkItem} activeClassName={navLinkItemCurrent}>
-              <div className={navLinkText}>Home</div>
-            </Link>
+          <Link to="/" className={navLinkItem} activeClassName={navLinkItemCurrent}>
+            <StaticImage className={navLinkItem}
+              alt="1st Twyford Scouts"
+              src="../images/Scouts1stTwyfordLinearWhite96px.png"/>
+          </Link>
           {
             query.allContentfulSection.nodes.map(node => (
                     <Link key={node.primaryTag} to={"/" + node.primaryTag} className={navLinkItem} activeClassName={navLinkItemCurrent}>
