@@ -23,6 +23,7 @@
 
 .createdAt {
     float:right;
+    font-size: small;
     text-align: right;
     margin: auto;
     color: #7f7f7f;
