@@ -1,7 +1,6 @@
 import * as React from 'react'
 import Layout from '../components/layout'
 import NewsStory from '../components/newsStory'
-import { StaticImage } from 'gatsby-plugin-image'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const IndexPage = () => {
@@ -14,6 +13,7 @@ const IndexPage = () => {
     ) {
       nodes {
         title
+        contentful_id
         createdAt
         mainBody {
           raw
@@ -27,7 +27,7 @@ const IndexPage = () => {
       <h1>News</h1>
       {
         news.allContentfulNewsStory.nodes.map(node =>(
-          <div>
+          <div key={node.contentful_id}>
             <NewsStory newsStory={node}></NewsStory>
           </div>                
             ))

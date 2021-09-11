@@ -6,7 +6,6 @@ import {
   topBar,
   topBarStaticElement,
   heading,
-  navLinks,
   navLinkItem,
   navLinkText,
   content
@@ -50,7 +49,7 @@ const Layout = ({ pageTitle, children }) => {
             </Link>
           {
             query.allContentfulSection.nodes.map(node => (
-                    <Link to={"/" + node.primaryTag} className={navLinkItem}>
+                    <Link key={node.primaryTag} to={"/" + node.primaryTag} className={navLinkItem}>
                       <GatsbyImage className={navLinkText} alt={node.name} image={getImage(node.logo)}/>
                     </Link>
             ))              
@@ -62,7 +61,7 @@ const Layout = ({ pageTitle, children }) => {
           </div>
           {
             query.allContentfulStaticPage.nodes.map(node => (
-                    <Link to={"/" + node.url} className={navLinkItem}>
+                    <Link key={node.url} to={"/" + node.url} className={navLinkItem}>
                     <div className={navLinkText}>{node.buttonText}</div>
                     </Link>
             ))              

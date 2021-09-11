@@ -1,9 +1,10 @@
 import * as React from 'react'
 import Layout from '../components/layout'
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import { renderRichText} from "gatsby-source-contentful/rich-text"
 import NewsStory from '../components/newsStory'
 import Notice from '../components/notice'
+
 const SectionPage = ({data, pageContext}) => {
 
   const options = {
@@ -18,11 +19,11 @@ const SectionPage = ({data, pageContext}) => {
 
       <h1>Notices</h1>
       {
-        data.allContentfulNotice.nodes.map(node =>(<Notice notice={node}></Notice>))
+        data.allContentfulNotice.nodes.map(node =>(<Notice key={node.contentful_id} notice={node}></Notice>))
       }
       <h1>News</h1>
       {
-        data.allContentfulNewsStory.nodes.map(node =>(<NewsStory newsStory={node}></NewsStory>))
+        data.allContentfulNewsStory.nodes.map(node =>(<NewsStory key={node.contentful_id} newsStory={node}></NewsStory>))
       }
       </div>
     </Layout>
@@ -41,6 +42,7 @@ query ($primaryTag: String) {
       filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: $primaryTag}}}}}
     ) {
       nodes {
+        contentful_id
         updatedAt
         category
         title
@@ -55,6 +57,7 @@ query ($primaryTag: String) {
       limit: 10
     ) {
       nodes {
+        contentful_id
         title
         createdAt
         mainBody {
