@@ -14,7 +14,7 @@ import {
 import { useStaticQuery, graphql } from 'gatsby'
 
 const Layout = ({ pageTitle, children }) => {
-    const sections = useStaticQuery(graphql`
+    const query = useStaticQuery(graphql`
     query {
         allContentfulSection {
           nodes {
@@ -25,6 +25,12 @@ const Layout = ({ pageTitle, children }) => {
                 name
               }
             }
+          }
+        }
+        allContentfulStaticPage {
+          nodes {
+            buttonText
+            url
           }
         }
       }`)
@@ -39,17 +45,24 @@ const Layout = ({ pageTitle, children }) => {
               <div className={navLinkText}>Home</div>
             </Link>
           {
-            sections.allContentfulSection.nodes.map(node => (
-                    <Link to={"/sections/" + node.primaryTag} className={navLinkItem}>
+            query.allContentfulSection.nodes.map(node => (
+                    <Link to={"/" + node.primaryTag} className={navLinkItem}>
                     <div className={navLinkText}>{node.name}</div>
                     </Link>
             ))              
           }
           <div className={navLinkItem}>
-            <Link to="/contact" className={navLinkItem}>
+            <Link to="/how-to-contact-us" className={navLinkItem}>
             <div className={navLinkText}>Contact Us</div>
             </Link>
           </div>
+          {
+            query.allContentfulStaticPage.nodes.map(node => (
+                    <Link to={"/" + node.url} className={navLinkItem}>
+                    <div className={navLinkText}>{node.buttonText}</div>
+                    </Link>
+            ))              
+          }
       </nav>
       <main className={content}>
         <h1 className={heading}>{pageTitle}</h1>

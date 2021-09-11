@@ -1,9 +1,9 @@
 import * as React from 'react'
-import Layout from '../../components/layout'
+import Layout from '../components/layout'
 import { useStaticQuery, graphql } from 'gatsby'
 import { renderRichText} from "gatsby-source-contentful/rich-text"
-import NewsStory from '../../components/newsStory'
-import Notice from '../../components/notice'
+import NewsStory from '../components/newsStory'
+import Notice from '../components/notice'
 const SectionPage = ({data, pageContext}) => {
 
   const options = {
