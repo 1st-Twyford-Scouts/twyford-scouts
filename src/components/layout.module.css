@@ -29,6 +29,11 @@
     background-color:#00a794;
   }
 
+  .nav-link-item-current{
+    background-color:#00a794;
+  }
+
+
   .nav-link-text {
     color: white;
     margin-top:auto;

@@ -14,10 +14,22 @@ const IndexPage = () => {
       nodes {
         title
         contentful_id
+        id
         createdAt
-        mainBody {
-          raw
+        thumbNailImage {
+          gatsbyImageData
         }
+        summary {
+          raw
+          references {
+            __typename
+            ... on ContentfulAsset {
+               contentful_id
+               gatsbyImageData
+              title
+            }
+        }         
+    }
       }
     }
   }`)

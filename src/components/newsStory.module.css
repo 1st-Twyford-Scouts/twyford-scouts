@@ -9,6 +9,11 @@
 .content{    
 }
 
+.link{
+  color: inherit;
+  text-decoration: inherit;
+}
+
 .title {
     margin: auto;
     display: inline-block;

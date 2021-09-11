@@ -8,6 +8,7 @@ import {
   heading,
   navLinkItem,
   navLinkText,
+  navLinkItemCurrent,
   content
 } from './layout.module.css'
 import { useStaticQuery, graphql } from 'gatsby'
@@ -49,7 +50,7 @@ const Layout = ({ pageTitle, children }) => {
             </Link>
           {
             query.allContentfulSection.nodes.map(node => (
-                    <Link key={node.primaryTag} to={"/" + node.primaryTag} className={navLinkItem}>
+                    <Link key={node.primaryTag} to={"/" + node.primaryTag} className={navLinkItem} activeClassName={navLinkItemCurrent}>
                       <GatsbyImage className={navLinkText} alt={node.name} image={getImage(node.logo)}/>
                     </Link>
             ))              

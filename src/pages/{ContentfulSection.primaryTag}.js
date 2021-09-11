@@ -58,11 +58,23 @@ query ($primaryTag: String) {
     ) {
       nodes {
         contentful_id
+        id
         title
         createdAt
-        mainBody {
-          raw
+        thumbNailImage {
+          gatsbyImageData
         }
+        summary {
+          raw
+          references {
+            __typename
+            ... on ContentfulAsset {
+               contentful_id
+               gatsbyImageData
+              title
+            }
+        }         
+    }
       }
     }
 }
