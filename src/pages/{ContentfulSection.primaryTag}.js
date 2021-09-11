@@ -4,14 +4,17 @@ import { graphql } from 'gatsby'
 import { renderRichText} from "gatsby-source-contentful/rich-text"
 import NewsStory from '../components/newsStory'
 import Notice from '../components/notice'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { embeddedImage} from '../components/common.module.css'
 
-const SectionPage = ({data, pageContext}) => {
+const SectionPage = ({data}) => {
 
   const options = {
   }
 
   return (
     <Layout pageTitle={data.contentfulSection.name + " Section"}>
+      <GatsbyImage className={embeddedImage} alt={data.contentfulSection.name} image={getImage(data.contentfulSection.logo)}/>
       <div>
       {
         data.contentfulSection.intro && renderRichText(data.contentfulSection.intro, options)
@@ -36,6 +39,9 @@ query ($primaryTag: String) {
       name
       intro {
         raw
+      }
+      logo {
+        gatsbyImageData
       }
     }
     allContentfulNotice(

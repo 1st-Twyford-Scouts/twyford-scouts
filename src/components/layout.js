@@ -5,7 +5,6 @@ import {
   container,
   topBar,
   topBarStaticElement,
-  heading,
   navLinkItem,
   navLinkText,
   navLinkItemCurrent,
@@ -13,7 +12,7 @@ import {
 } from './layout.module.css'
 import { useStaticQuery, graphql } from 'gatsby'
 
-const Layout = ({ pageTitle, children }) => {
+const Layout = ({ children }) => {
     const query = useStaticQuery(graphql`
     query {
         allContentfulSection {
@@ -45,7 +44,7 @@ const Layout = ({ pageTitle, children }) => {
         <StaticImage className={topBarStaticElement}
           alt="1st Twyford Scouts"
           src="../images/Scouts1stTwyfordLinearWhite96px.png"/>
-            <Link to="/" className={navLinkItem}>
+            <Link to="/" className={navLinkItem} activeClassName={navLinkItemCurrent}>
               <div className={navLinkText}>Home</div>
             </Link>
           {
@@ -55,21 +54,18 @@ const Layout = ({ pageTitle, children }) => {
                     </Link>
             ))              
           }
-          <div className={navLinkItem}>
-            <Link to="/how-to-contact-us" className={navLinkItem}>
+            <Link to="/how-to-contact-us" className={navLinkItem} activeClassName={navLinkItemCurrent}>
             <div className={navLinkText}>Contact Us</div>
             </Link>
-          </div>
           {
             query.allContentfulStaticPage.nodes.map(node => (
-                    <Link key={node.url} to={"/" + node.url} className={navLinkItem}>
+                    <Link key={node.url} to={"/" + node.url} className={navLinkItem} activeClassName={navLinkItemCurrent}>
                     <div className={navLinkText}>{node.buttonText}</div>
                     </Link>
             ))              
           }
       </nav>
       <main className={content}>
-        <h1 className={heading}>{pageTitle}</h1>
         {children}
       </main>
     </div>
