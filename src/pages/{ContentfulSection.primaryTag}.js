@@ -46,6 +46,7 @@ query ($primaryTag: String) {
     }
     allContentfulNotice(
       filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: $primaryTag}}}}}
+      sort: {order: ASC, fields: priority}
     ) {
       nodes {
         contentful_id
