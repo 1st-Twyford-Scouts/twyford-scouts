@@ -11,7 +11,6 @@ const StaticPage = ({data}) => {
   const options = {
     renderNode: {
         [BLOCKS.EMBEDDED_ASSET]: node => {
-            console.log('asset node ' + JSON.stringify(node))
             return (
                 <GatsbyImage className={embeddedImage} alt={node.data.target.title} image={getImage(node.data.target.gatsbyImageData)}/>
               )        }
