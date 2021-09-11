@@ -16,7 +16,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 const Layout = ({ children }) => {
     const query = useStaticQuery(graphql`
     query {
-        allContentfulSection {
+        allContentfulSection(sort: {order: ASC, fields: primaryTag}) {
           nodes {
             name
             primaryTag
