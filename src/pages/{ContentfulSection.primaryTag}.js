@@ -5,7 +5,8 @@ import { renderRichText} from "gatsby-source-contentful/rich-text"
 import NewsStory from '../components/newsStory'
 import Notice from '../components/notice'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import { embeddedImage, linkWithoutUnderline } from '../components/common.module.css'
+import { linkWithoutUnderline } from '../components/common.module.css'
+import { introText, introLogo } from './section.module.css'
 
 const SectionPage = ({data}) => {
 
@@ -14,11 +15,13 @@ const SectionPage = ({data}) => {
 
   return (
     <Layout pageTitle={data.contentfulSection.name + " Section"}>
-      <GatsbyImage className={embeddedImage} alt={data.contentfulSection.name} image={getImage(data.contentfulSection.logo)}/>
       <div>
+      <GatsbyImage className={introLogo} alt={data.contentfulSection.name} image={getImage(data.contentfulSection.logo)}/>
+      <div className={introText}>
       {
         data.contentfulSection.intro && renderRichText(data.contentfulSection.intro, options)
       }
+      </div>
       {data.allContentfulSubSection.nodes.length > 0 &&
         <div>
           <h1>Sections</h1>
