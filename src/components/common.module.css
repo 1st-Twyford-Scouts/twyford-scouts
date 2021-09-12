@@ -2,3 +2,8 @@
     float: left;
     margin-right: 20px;
   }
+
+.linkWithoutUnderline {
+  color: inherit;
+  text-decoration: inherit;
+}

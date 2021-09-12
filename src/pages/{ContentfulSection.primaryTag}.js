@@ -1,11 +1,11 @@
 import * as React from 'react'
 import Layout from '../components/layout'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { renderRichText} from "gatsby-source-contentful/rich-text"
 import NewsStory from '../components/newsStory'
 import Notice from '../components/notice'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import { embeddedImage} from '../components/common.module.css'
+import { embeddedImage, linkWithoutUnderline } from '../components/common.module.css'
 
 const SectionPage = ({data}) => {
 
@@ -18,6 +18,22 @@ const SectionPage = ({data}) => {
       <div>
       {
         data.contentfulSection.intro && renderRichText(data.contentfulSection.intro, options)
+      }
+      {data.allContentfulSubSection.nodes.length > 0 &&
+        <div>
+          <h1>Sections</h1>
+          {
+            data.allContentfulSubSection.nodes.map(node =>(
+              <div>
+              {node.hasPage &&
+                <Link className={linkWithoutUnderline} to={"/" + node.primaryTag}>
+                  <p>{node.name} - {node.summary}</p>
+                </Link>}
+              {!node.hasPage && <p>{node.name} - {node.summary}</p>}
+              </div>
+              ))
+          }
+        </div>
       }
 
       <h1>Notices</h1>
@@ -44,7 +60,16 @@ query ($primaryTag: String) {
         gatsbyImageData
       }
     }
-    allContentfulNotice(
+    allContentfulSubSection(
+      filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: $primaryTag}}}}}
+    ) {
+      nodes {
+        name
+        summary
+        primaryTag
+        hasPage
+      }
+    }    allContentfulNotice(
       filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: $primaryTag}}}}}
       sort: {order: ASC, fields: priority}
     ) {
