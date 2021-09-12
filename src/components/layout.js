@@ -12,6 +12,7 @@ import {
   content
 } from './layout.module.css'
 import { useStaticQuery, graphql } from 'gatsby'
+import "@fontsource/nunito-sans"
 
 const Layout = ({ children }) => {
     const query = useStaticQuery(graphql`
