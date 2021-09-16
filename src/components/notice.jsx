@@ -25,14 +25,18 @@ const Notice = ({ notice }) => {
       case 'camp':
         categoryClass = categoryCamp;
         break;
+
       case 'fundraising':
         categoryClass = categoryFundraising;
+        break;
+
+      default:
         break;
     }
 
     return (
     <div className={`${categoryClass} ${entireNotice}`}>
-      <div className={title}>{ notice.title || (notice.category == 'thisweek' ? 'Scouts This Week' : '')}</div>
+      <div className={title}>{ notice.title || (notice.category === 'thisweek' ? 'Scouts This Week' : '')}</div>
       <div className={updatedAt}>{new Date(notice.updatedAt).toLocaleString()}</div>
       {
         renderRichText(notice.content, options)

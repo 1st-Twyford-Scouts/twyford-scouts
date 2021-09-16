@@ -5,7 +5,6 @@ import { StaticImage, GatsbyImage, getImage } from 'gatsby-plugin-image'
 import {
   container,
   topBar,
-  topBarStaticElement,
   navLinkItem,
   navLinkText,
   navLinkItemCurrent,
