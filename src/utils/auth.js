@@ -39,7 +39,8 @@ const auth = isBrowser
   
   const setSession = (cb = () => {}) => (err, authResult) => {
     if (err) {
-      navigate("/")
+      localStorage.setItem("isLoggedIn", false)
+      user = {}
       cb()
       return
     }
@@ -66,4 +67,14 @@ const auth = isBrowser
   
   export const getProfile = () => {
     return user
+  }
+
+  export const silentAuth = callback => {
+    if (!isAuthenticated()) return callback()
+    auth.checkSession({}, setSession(callback))
+  }
+
+  export const logout = () => {
+    localStorage.setItem("isLoggedIn", false)
+    auth.logout()
   }

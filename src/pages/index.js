@@ -2,8 +2,10 @@ import * as React from 'react'
 import Layout from '../components/layout'
 import NewsStory from '../components/newsStory'
 import { useStaticQuery, graphql } from 'gatsby'
+import logo from '../images/Scouts1stTwyfordSquarePurple150px.png'
 
 const IndexPage = () => {
+  console.log(logo)
   const news = useStaticQuery(graphql`
   query MyQuery {
     allContentfulNewsStory(

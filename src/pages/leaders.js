@@ -1,6 +1,6 @@
 import React from "react"
 import { Router } from "@reach/router"
-import { login, isAuthenticated, getProfile } from "../utils/auth"
+import { login, logout, isAuthenticated, getProfile } from "../utils/auth"
 import { Link } from "gatsby"
 
 const Home = ({ user }) => {
@@ -19,9 +19,14 @@ const Leaders = () => {
     return (
     <>
         <nav>
-        <Link to="/leaders">Leaders Home</Link>{" "}
-        <Link to="/leaders/notices">Notices</Link>{" "}
-        <Link to="/leaders/news">News Stories</Link>{" "}
+          <Link to="/leaders">Leaders Home</Link>{" "}
+          <Link to="/leaders/notices">Notices</Link>{" "}
+          <Link to="/leaders/news">News Stories</Link>{" "}
+          <a href="#logout"
+            onClick={e => {
+              logout()
+              e.preventDefault()
+            }}>Log Out</a>
         </nav>
         <Router>
         <Home path="/leaders" user={user} />
