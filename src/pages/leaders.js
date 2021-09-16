@@ -9,8 +9,7 @@ import {
   navLinkItem,
   navLinkText,
   navLinkItemCurrent,
-  profilePicture,
-  content
+  profilePicture
 } from './leaders.module.css'
 
 const Home = ({ user }) => {
@@ -44,7 +43,7 @@ const Leaders = () => {
               e.preventDefault()
             }}><div className={navLinkText}>Log Out</div></a>
             <div className={navLinkItem}>
-              <img className={profilePicture} src={user.picture}/>
+              <img className={profilePicture} src={user.picture} alt={user.name}/>
             </div>
         </nav>
         <Router>
