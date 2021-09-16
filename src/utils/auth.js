@@ -37,7 +37,7 @@ const auth = isBrowser
     auth.authorize()
   }
   
-  const setSession = (cb = () => {}) => (err, authResult) => {
+  const setSession = (cb = () => {}, isSilent = false) => (err, authResult) => {
     if (err) {
       localStorage.setItem("isLoggedIn", false)
       user = {}
@@ -52,7 +52,9 @@ const auth = isBrowser
       tokens.expiresAt = expiresAt
       user = authResult.idTokenPayload
       localStorage.setItem("isLoggedIn", true)
-      navigate("/leaders")
+      if (!isSilent){
+        navigate("/leaders")
+      }
       cb()
     }
   }
@@ -71,7 +73,7 @@ const auth = isBrowser
 
   export const silentAuth = callback => {
     if (!isAuthenticated()) return callback()
-    auth.checkSession({}, setSession(callback))
+    auth.checkSession({}, setSession(callback, true))
   }
 
   export const logout = () => {
