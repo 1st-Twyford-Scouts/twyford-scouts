@@ -71,6 +71,10 @@ const auth = isBrowser
     return user
   }
 
+  export const getTokens = () => {
+    return tokens
+  }
+
   export const silentAuth = callback => {
     if (!isAuthenticated()) return callback()
     auth.checkSession({}, setSession(callback, true))

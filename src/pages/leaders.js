@@ -1,6 +1,6 @@
 import React from "react"
 import { Router } from "@reach/router"
-import { login, logout, isAuthenticated, getProfile } from "../utils/auth"
+import { login, logout, isAuthenticated, getProfile, getTokens } from "../utils/auth"
 import { Link } from "gatsby"
 import { StaticImage } from 'gatsby-plugin-image'
 import {
@@ -26,6 +26,8 @@ const Leaders = () => {
 
   const user = getProfile()
   console.log(user)
+  const tokens = getTokens()
+  console.log(tokens)
   return (
     <div className={container}>
         <nav className={topBar}>
