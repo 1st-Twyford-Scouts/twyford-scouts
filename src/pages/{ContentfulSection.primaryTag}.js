@@ -29,7 +29,7 @@ const SectionPage = ({data}) => {
             data.allContentfulSubSection.nodes.map(node =>(
               <div>
               {node.hasPage &&
-                <Link className={linkWithoutUnderline} to={"/" + node.primaryTag}>
+                <Link key={node.primaryTag} className={linkWithoutUnderline} to={"/" + node.primaryTag}>
                   <p>{node.name} - {node.summary}</p>
                 </Link>}
               {!node.hasPage && <p>{node.name} - {node.summary}</p>}
