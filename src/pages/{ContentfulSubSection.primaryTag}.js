@@ -23,25 +23,26 @@ const SubSectionPage = ({data}) => {
     <Layout>
       <GatsbyImage alt={data.contentfulSubSection.section.name} image={getImage(data.contentfulSubSection.section.logo)}/>
       <div>
-      {
-        data.contentfulSubSection.description && renderRichText(data.contentfulSubSection.description, options)
-      }
-      {data.allContentfulNotice.nodes.length > 0 &&
-        <div>
-          <h1>{data.contentfulSubSection.name} Notices</h1>
-          {
-            data.allContentfulNotice.nodes.map(node =>(<Notice key={node.contentful_id} notice={node}></Notice>))
-          }
+        <h1>{data.contentfulSubSection.longname}</h1>
+        {
+          data.contentfulSubSection.description && renderRichText(data.contentfulSubSection.description, options)
+        }
+        {data.allContentfulNotice.nodes.length > 0 &&
+          <div>
+            <h1>{data.contentfulSubSection.name} Notices</h1>
+            {
+              data.allContentfulNotice.nodes.map(node =>(<Notice key={node.contentful_id} notice={node}></Notice>))
+            }
+            </div>
+        }
+        {data.allContentfulNewsStory.nodes.length > 0 &&
+          <div>
+            <h1>{data.contentfulSubSection.name} News</h1>
+            {
+              data.allContentfulNewsStory.nodes.map(node =>(<NewsStory key={node.contentful_id} newsStory={node}></NewsStory>))
+            }
           </div>
-      }
-      {data.allContentfulNewsStory.nodes.length > 0 &&
-        <div>
-          <h1>{data.contentfulSubSection.name} News</h1>
-          {
-            data.allContentfulNewsStory.nodes.map(node =>(<NewsStory key={node.contentful_id} newsStory={node}></NewsStory>))
-          }
-        </div>
-      }
+        }
       </div>
     </Layout>
   )
@@ -67,6 +68,7 @@ query ($primaryTag: String) {
     name
     section {
       name
+      longname
       logo {
         gatsbyImageData
         title

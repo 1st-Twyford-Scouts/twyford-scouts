@@ -5,6 +5,7 @@ import { renderRichText} from "gatsby-source-contentful/rich-text"
 import { BLOCKS } from "@contentful/rich-text-types"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { embeddedImage} from '../../components/common.module.css'
+import { newsMain } from './news.module.css'
 
 const NewsPage = ({data}) => {
 
@@ -21,7 +22,7 @@ const NewsPage = ({data}) => {
     <Layout pageTitle={data.contentfulNewsStory.title}>
       <GatsbyImage alt={data.contentfulNewsStory.title} image={getImage(data.contentfulNewsStory.thumbNailImage)}/>
       <h1>{data.contentfulNewsStory.title}</h1>
-      <div>
+      <div className={newsMain}>
       {
           data.contentfulNewsStory.mainBody && renderRichText(data.contentfulNewsStory.mainBody, options)
       }

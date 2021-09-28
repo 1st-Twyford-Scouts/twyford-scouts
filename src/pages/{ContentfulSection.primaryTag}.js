@@ -6,7 +6,7 @@ import NewsStory from '../components/newsStory'
 import Notice from '../components/notice'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { linkWithoutUnderline } from '../components/common.module.css'
-import { introText, introLogo } from './section.module.css'
+import { introText, introLogo, sectionList } from './section.module.css'
 
 const SectionPage = ({data}) => {
 
@@ -25,17 +25,23 @@ const SectionPage = ({data}) => {
       {data.allContentfulSubSection.nodes.length > 0 &&
         <div>
           <h1>Sections</h1>
+          <div className={sectionList}>
           {
             data.allContentfulSubSection.nodes.map(node =>(
               <div>
               {node.hasPage &&
-                <Link key={node.primaryTag} className={linkWithoutUnderline} to={"/" + node.primaryTag}>
-                  <p>{node.name} - {node.summary}</p>
-                </Link>}
+              <p>
+                <Link key={node.primaryTag} to={"/" + node.primaryTag}>
+                  <span>{node.name}</span>
+                </Link>
+                <span> - {node.summary}</span>
+              </p>
+              }
               {!node.hasPage && <p>{node.name} - {node.summary}</p>}
               </div>
               ))
-          }
+            }
+          </div>
         </div>
       }
       {data.allContentfulNotice.nodes.length > 0 &&

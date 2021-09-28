@@ -1,11 +1,22 @@
 .introText {
     display: inline-block;
     vertical-align:middle;
+    background-color: rgba(255,255,255, 0.8);
+    border-radius: 5px;
+    padding:5px;
 }
-
 
 .introLogo {  
     display: inline-block;
     vertical-align: middle;
     margin-right:20px;
+}
+
+.sectionList {
+    background-color: rgba(255,255,255, 0.8);
+    border-radius: 5px;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:10px;
+    padding-right:10px;
 }
