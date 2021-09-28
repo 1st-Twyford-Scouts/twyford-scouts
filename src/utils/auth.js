@@ -42,6 +42,8 @@ const auth = isBrowser
       localStorage.setItem("isLoggedIn", false)
       user = {}
       cb()
+      console.log('login error')
+      console.log(err)
       return
     }
   
@@ -53,7 +55,11 @@ const auth = isBrowser
       user = authResult.idTokenPayload
       localStorage.setItem("isLoggedIn", true)
       if (!isSilent){
+        console.log('real login')
         navigate("/leaders")
+      }
+      else{
+        console.log('silent login')
       }
       cb()
     }

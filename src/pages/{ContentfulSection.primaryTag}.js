@@ -38,14 +38,21 @@ const SectionPage = ({data}) => {
           }
         </div>
       }
-
-      <h1>Notices</h1>
-      {
-        data.allContentfulNotice.nodes.map(node =>(<Notice key={node.contentful_id} notice={node}></Notice>))
+      {data.allContentfulNotice.nodes.length > 0 &&
+        <div>
+          <h1>{data.contentfulSection.name} Notices</h1>
+          {
+            data.allContentfulNotice.nodes.map(node =>(<Notice key={node.contentful_id} notice={node}></Notice>))
+          }
+          </div>
       }
-      <h1>News</h1>
-      {
-        data.allContentfulNewsStory.nodes.map(node =>(<NewsStory key={node.contentful_id} newsStory={node}></NewsStory>))
+      {data.allContentfulNewsStory.nodes.length > 0 &&
+        <div>
+          <h1>{data.contentfulSection.name} News</h1>
+          {
+            data.allContentfulNewsStory.nodes.map(node =>(<NewsStory key={node.contentful_id} newsStory={node}></NewsStory>))
+          }
+        </div>
       }
       </div>
     </Layout>
@@ -56,6 +63,7 @@ export const query = graphql`
 query ($primaryTag: String) {
     contentfulSection(primaryTag: {eq: $primaryTag}) {
       name
+      primaryTag
       intro {
         raw
       }
@@ -72,7 +80,8 @@ query ($primaryTag: String) {
         primaryTag
         hasPage
       }
-    }    allContentfulNotice(
+    }
+    allContentfulNotice(
       filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: $primaryTag}}}}}
       sort: {order: ASC, fields: priority}
     ) {

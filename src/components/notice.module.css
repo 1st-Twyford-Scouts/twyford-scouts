@@ -36,7 +36,12 @@
     color: white;
   }
 
-  .categoryOther{
+  .categoryUrgent{
     background-color: #e22e12 ;
-    color: white;;
+    color: white;
+  }
+
+  .categoryOther{
+    background-color:lightgrey;
+    color: white;
   }

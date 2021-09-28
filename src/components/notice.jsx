@@ -7,6 +7,7 @@ import {
   categoryThisWeek,
   categoryCamp,
   categoryFundraising,
+  categoryUrgent,
   categoryOther
 } from './notice.module.css'
 
@@ -28,6 +29,10 @@ const Notice = ({ notice }) => {
 
       case 'fundraising':
         categoryClass = categoryFundraising;
+        break;
+
+      case 'urgent':
+        categoryClass = categoryUrgent;
         break;
 
       default:
