@@ -42,7 +42,7 @@ const Layout = ({ children, images }) => {
             url
           }
         }
-        contentfulGroup {
+        contentfulSection(primaryTag: {eq: "group"}) {
           backgroundImages {
             gatsbyImageData(width: 1280)
             title
@@ -73,7 +73,7 @@ const Layout = ({ children, images }) => {
       }
       {(!images || images.length === 0) &&
         <Fade {...slideShowProps}>
-        {query.contentfulGroup.backgroundImages.map(image =>
+        {query.contentfulSection.backgroundImages.map(image =>
           <div className="each-fade">
             <GatsbyImage className={backgroundImage} alt={image.title} image={getImage(image)} />
           </div>

@@ -21,12 +21,12 @@ const SectionPage = ({data}) => {
         data.contentfulSection.intro && renderRichText(data.contentfulSection.intro, options)
       }
       </div>
-      {data.allContentfulSubSection.nodes.length > 0 &&
+      {data.contentfulSection.subSections && data.contentfulSection.subSections.length > 0 &&
         <div>
           <h1>Sections</h1>
           <div className={sectionList}>
           {
-            data.allContentfulSubSection.nodes.map(node =>(
+            data.contentfulSection.subSections.map(node =>(
               <div>
               {node.hasPage &&
               <p>
@@ -66,70 +66,66 @@ const SectionPage = ({data}) => {
 
 export const query = graphql`
 query ($primaryTag: String) {
-    contentfulSection(primaryTag: {eq: $primaryTag}) {
-      name
-      primaryTag
-      intro {
-        raw
-      }
-      logo {
-        gatsbyImageData
-      }
-      backgroundImages {
-        gatsbyImageData(width: 1280)
-        title
-      }
-    }
-    allContentfulSubSection(
-      filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: $primaryTag}}}}}
-    ) {
-      nodes {
+  contentfulSection(primaryTag: {eq: $primaryTag}) {
         name
-        summary
         primaryTag
-        hasPage
-      }
-    }
-    allContentfulNotice(
-      filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: $primaryTag}}}}}
-      sort: {order: ASC, fields: priority}
-    ) {
-      nodes {
-        contentful_id
-        updatedAt
-        category
-        title
-        content {
+        intro {
           raw
         }
-      }
-    }
-    allContentfulNewsStory(
-      filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: $primaryTag}}}}}
-      sort: {order: DESC, fields: createdAt}
-      limit: 10
-    ) {
-      nodes {
-        contentful_id
-        id
-        title
-        createdAt
-        thumbNailImage {
+        logo {
           gatsbyImageData
         }
-        summary {
-          raw
-          references {
-            __typename
-            ... on ContentfulAsset {
-               contentful_id
-               gatsbyImageData
-              title
-            }
-        }         
-    }
+        backgroundImages {
+          gatsbyImageData(width: 1280)
+          title
+        }
+        subSections {
+          name
+          summary
+          primaryTag
+          hasPage
+        }		
+  }
+  allContentfulNotice(
+    filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: $primaryTag}}}}}
+    sort: {order: ASC, fields: priority}
+  ) {
+    nodes {
+      contentful_id
+      updatedAt
+      category
+      title
+      content {
+        raw
       }
     }
+  }
+  allContentfulNewsStory(
+    filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: $primaryTag}}}}}
+    sort: {order: DESC, fields: createdAt}
+    limit: 10
+  ) {
+    nodes {
+      contentful_id
+      id
+      title
+      createdAt
+      thumbNailImage {
+        gatsbyImageData
+      }
+      summary {
+        raw
+        references {
+          __typename
+          ... on ContentfulAsset {
+              contentful_id
+              gatsbyImageData
+            title
+          }
+        }         
+      }
+    }
+  }
 }
 `
 
