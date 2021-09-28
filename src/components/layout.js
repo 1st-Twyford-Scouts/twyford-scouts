@@ -19,21 +19,23 @@ import 'react-slideshow-image/dist/styles.css'
 const Layout = ({ children, images }) => {
     const query = useStaticQuery(graphql`
     query {
-        allContentfulSection(sort: {order: ASC, fields: primaryTag}) {
-          nodes {
-            name
-            primaryTag
-            logo {
-              gatsbyImageData
-            }
-            imageFileName
-            metadata {
-              tags {
-                name
-              }
+      allContentfulSection(
+        sort: {order: ASC, fields: primaryTag}
+        filter: {linkFromNav: {eq: true}}
+      ) {
+        nodes {
+          name
+          primaryTag
+          logo {
+            gatsbyImageData
+          }
+          metadata {
+            tags {
+              name
             }
           }
         }
+      }
         allContentfulStaticPage {
           nodes {
             buttonText
