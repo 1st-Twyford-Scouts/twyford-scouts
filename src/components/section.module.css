@@ -9,7 +9,7 @@
 
 .introLogo {  
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: middle !important;
     margin-right:20px;
 }
 
