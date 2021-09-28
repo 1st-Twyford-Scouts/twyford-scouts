@@ -40,8 +40,10 @@
     background-color: #7413DC;
     display: flex;
     justify-content: center;
-
+    z-index: 100;
+    position: relative;
   }
+  
   .topBarStaticElement {
     margin-left: 10px;
     margin-right: 10px;
@@ -49,8 +51,8 @@
     position:fixed;
   }
   .content {
-    margin-left: 7%;
-    margin-right: 7%;
+    margin-left: 4%;
+    margin-right: 4%;
     margin-top: 20px;
     margin-bottom:20px;
     position: relative;
@@ -63,6 +65,7 @@
     padding-right: 20px;
     padding-bottom: 20px;
   }
+  
   .backgroundImage{
     margin: 0px;
     width: 100%;

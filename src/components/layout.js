@@ -13,8 +13,10 @@ import {
 } from './layout.module.css'
 import { useStaticQuery, graphql } from 'gatsby'
 import "@fontsource/nunito-sans"
+import { Fade } from 'react-slideshow-image'
+import 'react-slideshow-image/dist/styles.css'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, images }) => {
     const query = useStaticQuery(graphql`
     query {
         allContentfulSection(sort: {order: ASC, fields: primaryTag}) {
@@ -38,15 +40,44 @@ const Layout = ({ children }) => {
             url
           }
         }
+        contentfulGroup {
+          backgroundImages {
+            gatsbyImageData(width: 1280)
+            title
+          }       
+        }
         contentfulAsset(title: {eq: "canoes-jpg"}) {
           gatsbyImageData(width: 1280)
           title
         }        
       }`)
 
+      const slideShowProps = {
+        duration: 20000,
+        arrows: false,
+        canSwipe: false
+      }
+
       return (
     <div className={container}>
-      <GatsbyImage className={backgroundImage} alt={query.contentfulAsset.title} image={getImage(query.contentfulAsset)} />
+      {images && images.length > 0 &&
+        <Fade {...slideShowProps}>
+        {images.map(image =>
+          <div className="each-fade">
+            <GatsbyImage className={backgroundImage} alt={image.title} image={getImage(image)} />
+          </div>
+          )}
+        </Fade>
+      }
+      {(!images || images.length === 0) &&
+        <Fade {...slideShowProps}>
+        {query.contentfulGroup.backgroundImages.map(image =>
+          <div className="each-fade">
+            <GatsbyImage className={backgroundImage} alt={image.title} image={getImage(image)} />
+          </div>
+          )}
+        </Fade>
+      }
       <nav className={topBar}>
           <Link to="/" className={navLinkItem} activeClassName={navLinkItemCurrent}>
             <StaticImage className={navLinkItem}
