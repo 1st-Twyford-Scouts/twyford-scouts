@@ -7,6 +7,7 @@ import NewsStory from '../components/newsStory'
 import { renderRichText} from "gatsby-source-contentful/rich-text"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { embeddedImage} from '../components/common.module.css'
+import { introText } from './section.module.css'
 
 const SubSectionPage = ({data}) => {
 
@@ -24,9 +25,11 @@ const SubSectionPage = ({data}) => {
       <GatsbyImage alt={data.contentfulSubSection.section.name} image={getImage(data.contentfulSubSection.section.logo)}/>
       <div>
         <h1>{data.contentfulSubSection.longname}</h1>
+        <div className={introText}>
         {
           data.contentfulSubSection.description && renderRichText(data.contentfulSubSection.description, options)
         }
+        </div>
         {data.allContentfulNotice.nodes.length > 0 &&
           <div>
             <h1>{data.contentfulSubSection.name} Notices</h1>
@@ -66,9 +69,9 @@ query ($primaryTag: String) {
   }
   contentfulSubSection(primaryTag: {eq: $primaryTag}) {
     name
+    longname
     section {
       name
-      longname
       logo {
         gatsbyImageData
         title
