@@ -8,7 +8,8 @@ import {
   navLinkItem,
   navLinkText,
   navLinkItemCurrent,
-  content
+  content,
+  backgroundImage
 } from './layout.module.css'
 import { useStaticQuery, graphql } from 'gatsby'
 import "@fontsource/nunito-sans"
@@ -37,10 +38,15 @@ const Layout = ({ children }) => {
             url
           }
         }
+        contentfulAsset(title: {eq: "canoes-jpg"}) {
+          gatsbyImageData(width: 1280)
+          title
+        }        
       }`)
 
       return (
     <div className={container}>
+      <GatsbyImage className={backgroundImage} alt={query.contentfulAsset.title} image={getImage(query.contentfulAsset)} />
       <nav className={topBar}>
           <Link to="/" className={navLinkItem} activeClassName={navLinkItemCurrent}>
             <StaticImage className={navLinkItem}

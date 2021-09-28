@@ -4,6 +4,7 @@
     border-radius: 5px;
     padding:15px;
     box-shadow: 3px 5px #aaaaaa;
+    opacity: 1;
 }
 
 .title {
@@ -37,11 +38,11 @@
   }
 
   .categoryUrgent{
-    background-color: #e22e12 ;
+    background-color: #e22e12;
     color: white;
   }
 
   .categoryOther{
-    background-color:lightgrey;
+    background-color:#003982;
     color: white;
   }
