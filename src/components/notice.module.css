@@ -3,7 +3,7 @@
     background-color: #f0f0f0;
     border-radius: 5px;
     padding:15px;
-    box-shadow: 3px 5px #aaaaaa;
+    box-shadow: 4px 5px rgba(0,0,0,0.2);
     opacity: 1;
 }
 
