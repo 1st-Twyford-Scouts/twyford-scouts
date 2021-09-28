@@ -1,5 +1,5 @@
 html {
-    width: 100vw;
+    overflow-y: scroll;
 }
 
 h1 {
@@ -16,4 +16,6 @@ h2 {
 
 body {
     font-family: "Nunito Sans";
+    margin: 0px;
+    max-width: 100%;
   }
