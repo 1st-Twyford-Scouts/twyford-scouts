@@ -5,6 +5,7 @@ import { renderRichText} from "gatsby-source-contentful/rich-text"
 import { BLOCKS } from "@contentful/rich-text-types"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { embeddedImage} from '../components/common.module.css'
+import { generalTextBox } from '../components/layout.module.css'
 
 const StaticPage = ({data}) => {
 
@@ -19,7 +20,7 @@ const StaticPage = ({data}) => {
 
   return (
     <Layout pageTitle={data.contentfulStaticPage.title}>
-      <div>
+      <div className={generalTextBox}>
       {
           data.contentfulStaticPage.content && renderRichText(data.contentfulStaticPage.content, options)
       }

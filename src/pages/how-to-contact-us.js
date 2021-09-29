@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import {
   smallPrint
 } from './contact.module.css'
+import { generalTextBox } from '../components/layout.module.css'
 
 const ContactPage = () => {
     const contacts = useStaticQuery(graphql`
@@ -24,16 +25,18 @@ const ContactPage = () => {
         {
             contacts.allContentfulContact.group.map(group =>(
                 <div>
-                <h2>{group.fieldValue}</h2>
-                <ul>
-                {
-                    group.nodes.map(node => (
-                        <li key = {node.name}>
-                            {node.name} - <a href={"mailto:" + node.email}>{node.email}</a> {node.phone}
-                        </li>
-                    ))
-                }
-                </ul>                
+                <h1>{group.fieldValue}</h1>
+                <div className={generalTextBox}>
+                  <ul>
+                  {
+                      group.nodes.map(node => (
+                          <li key = {node.name}>
+                              {node.name} - <a href={"mailto:" + node.email}>{node.email}</a> {node.phone}
+                          </li>
+                      ))
+                  }
+                  </ul>                
+                </div>
                 </div>                
             ))
         }
