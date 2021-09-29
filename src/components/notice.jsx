@@ -8,7 +8,9 @@ import {
   categoryCamp,
   categoryFundraising,
   categoryUrgent,
-  categoryOther
+  categoryOther,
+  categoryTitleThisWeek,
+  categoryTitleOther,
 } from './notice.module.css'
 
 
@@ -17,10 +19,12 @@ const Notice = ({ notice }) => {
     }
 
     var categoryClass = categoryOther;
+    var categoryTitleClass = categoryTitleOther
     switch (notice.category)
     {
       case 'thisweek':
         categoryClass = categoryThisWeek;
+        categoryTitleClass = categoryTitleThisWeek;
         break;
 
       case 'camp':
@@ -41,7 +45,7 @@ const Notice = ({ notice }) => {
 
     return (
     <div className={`${categoryClass} ${entireNotice}`}>
-      <div className={title}>{ notice.title || (notice.category === 'thisweek' ? 'Scouts This Week' : '')}</div>
+      <div className={title + ' ' + categoryTitleClass}>{ notice.title || (notice.category === 'thisweek' ? 'Scouts This Week' : '')}</div>
       <div className={updatedAt}>{new Date(notice.updatedAt).toLocaleString()}</div>
       {
         renderRichText(notice.content, options)
