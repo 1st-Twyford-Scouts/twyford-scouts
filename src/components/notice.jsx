@@ -10,6 +10,9 @@ import {
   categoryUrgent,
   categoryOther,
   categoryTitleThisWeek,
+  categoryTitleCamp,
+  categoryTitleFundraising,
+  categoryTitleUrgent,
   categoryTitleOther,
 } from './notice.module.css'
 
@@ -29,14 +32,17 @@ const Notice = ({ notice }) => {
 
       case 'camp':
         categoryClass = categoryCamp;
+        categoryTitleClass = categoryTitleCamp;
         break;
 
       case 'fundraising':
         categoryClass = categoryFundraising;
+        categoryTitleClass = categoryTitleFundraising;
         break;
 
       case 'urgent':
         categoryClass = categoryUrgent;
+        categoryTitleClass = categoryTitleUrgent;
         break;
 
       default:

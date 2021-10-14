@@ -22,33 +22,33 @@
   }
 
   .categoryThisWeek {
-    background-color: rgba(255,230,39,0.9);
+    background-color: rgba(255,255,255,0.9);
     color: black;
   }
 
   .categoryCamp {
-    background-color: rgb(0,109,223,0.9);
-    color: white;
+    background-color: rgba(255,255,255,0.9);
+    color: black;
   }
 
   .categoryFundraising{
-    background-color: rgba(35,169,80,0.9);
-    color: white;
+    background-color: rgba(255,255,255,0.9);
+    color: black;
   }
 
   .categoryUrgent{
-    background-color: rgb(226,46,18, 0.9);
-    color: white;
+    background-color: rgba(255,255,255,0.9);
+    color: black;
   }
 
   .categoryOther{
-    background-color:rgb(0,57,130,0.9);
-    color: white;
+    background-color: rgba(255,255,255,0.9);
+    color: black;
   }
 
   .categoryTitleOther{
-    background-color:white;
-    color: rgb(0,57,130,0.9);
+    background-color:rgb(0,57,130,0.9);
+    color: white;
     width:100%;
     margin: -15px;
     padding: 15px;
@@ -59,8 +59,44 @@
   }
 
   .categoryTitleThisWeek{
-    background-color:black;
-    color: rgba(255,230,39,0.9);
+    background-color: rgba(255,230,39,0.9);
+    color: black;
+    width:100%;
+    margin: -15px;
+    padding: 15px;
+    border-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-bottom: 5px;
+  }  
+
+  .categoryTitleCamp{
+    background-color: rgb(0,109,223,0.9);
+    color: white;
+    width:100%;
+    margin: -15px;
+    padding: 15px;
+    border-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-bottom: 5px;
+  }  
+
+  .categoryTitleUrgent{
+    background-color: rgb(226,46,18, 0.9);
+    color: white;
+    width:100%;
+    margin: -15px;
+    padding: 15px;
+    border-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-bottom: 5px;
+  }  
+
+  .categoryTitleFundraising{
+    background-color: rgba(35,169,80,0.9);
+    color: white;
     width:100%;
     margin: -15px;
     padding: 15px;
