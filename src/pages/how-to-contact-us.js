@@ -15,6 +15,7 @@ const ContactPage = () => {
               email
               name
               phone
+              website
             }
             fieldValue
           }
@@ -31,7 +32,7 @@ const ContactPage = () => {
                   {
                       group.nodes.map(node => (
                           <li key = {node.name}>
-                              {node.name} - <a href={"mailto:" + node.email}>{node.email}</a> {node.phone}
+                              {node.name} - {node.website && <a href={node.website}>{node.website}</a>} {node.email && <a href={"mailto:" + node.email}>{node.email}</a>} {node.phone}
                           </li>
                       ))
                   }
