@@ -15,7 +15,20 @@ query ($primaryTag: String) {
         primaryTag
         intro {
           raw
-        }
+          references {
+            __typename
+            ... on ContentfulStaticPage {
+              contentful_id
+              title
+              url
+            }
+            ... on ContentfulAsset {
+                contentful_id
+                gatsbyImageData
+              title
+            }
+          }
+          }
         logo {
           gatsbyImageData
         }
@@ -41,6 +54,19 @@ query ($primaryTag: String) {
       title
       content {
         raw
+        references {
+          __typename
+          ... on ContentfulStaticPage {
+            contentful_id
+            title
+            url
+          }
+          ... on ContentfulAsset {
+              contentful_id
+              gatsbyImageData
+            title
+          }
+        }
       }
     }
   }
@@ -61,12 +87,17 @@ query ($primaryTag: String) {
         raw
         references {
           __typename
+          ... on ContentfulStaticPage {
+            contentful_id
+            title
+            url
+          }
           ... on ContentfulAsset {
               contentful_id
               gatsbyImageData
             title
           }
-        }         
+        }
       }
     }
   }

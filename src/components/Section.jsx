@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Layout from './layout'
 import { Link } from 'gatsby'
-import { renderRichText} from "gatsby-source-contentful/rich-text"
+import RenderRichText from '../components/RenderRichText.jsx'
 import NewsStory from './newsStory'
 import Notice from './notice'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
@@ -9,17 +9,12 @@ import { introText, introLogo, sectionList } from './section.module.css'
 
 const Section = ({data}) => {
 
-  const options = {
-  }
-
   return (
     <Layout images={data.contentfulSection.backgroundImages}>
       <div>
       <GatsbyImage className={introLogo} alt={data.contentfulSection.name} image={getImage(data.contentfulSection.logo)}/>
       <div className={introText}>
-      {
-        data.contentfulSection.intro && renderRichText(data.contentfulSection.intro, options)
-      }
+        <RenderRichText content={data.contentfulSection.intro}/>
       </div>
       {data.contentfulSection.subSections && data.contentfulSection.subSections.length > 0 &&
         <div>

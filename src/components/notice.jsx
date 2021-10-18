@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { renderRichText} from "gatsby-source-contentful/rich-text"
+import RenderRichText from './RenderRichText.jsx'
 import {
   updatedAt,
   title,
@@ -18,9 +18,6 @@ import {
 
 
 const Notice = ({ notice }) => {
-  const options = {
-    }
-
     var categoryClass = categoryOther;
     var categoryTitleClass = categoryTitleOther
     switch (notice.category)
@@ -53,9 +50,7 @@ const Notice = ({ notice }) => {
     <div className={`${categoryClass} ${entireNotice}`}>
       <div className={title + ' ' + categoryTitleClass}>{ notice.title || (notice.category === 'thisweek' ? 'Scouts This Week' : '')}</div>
       <div className={updatedAt}>{new Date(notice.updatedAt).toLocaleString()}</div>
-      {
-        renderRichText(notice.content, options)
-      }
+      <RenderRichText content={notice.content}/>
     </div>
   )
 }

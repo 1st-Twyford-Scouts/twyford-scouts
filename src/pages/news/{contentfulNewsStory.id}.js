@@ -1,31 +1,18 @@
 import * as React from 'react'
 import Layout from '../../components/layout'
 import { graphql } from 'gatsby'
-import { renderRichText} from "gatsby-source-contentful/rich-text"
-import { BLOCKS } from "@contentful/rich-text-types"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import { embeddedImage} from '../../components/common.module.css'
 import { newsMain } from './news.module.css'
+import RenderRichText from '../../components/RenderRichText.jsx'
 
 const NewsPage = ({data}) => {
-
-  const options = {
-    renderNode: {
-        [BLOCKS.EMBEDDED_ASSET]: node => {
-            return (
-                <GatsbyImage className={embeddedImage} alt={node.data.target.title} image={getImage(node.data.target.gatsbyImageData)}/>
-              )        }
-      }
-    }
 
   return (
     <Layout pageTitle={data.contentfulNewsStory.title}>
       <GatsbyImage alt={data.contentfulNewsStory.title} image={getImage(data.contentfulNewsStory.thumbNailImage)}/>
       <h1>{data.contentfulNewsStory.title}</h1>
       <div className={newsMain}>
-      {
-          data.contentfulNewsStory.mainBody && renderRichText(data.contentfulNewsStory.mainBody, options)
-      }
+        <RenderRichText content={data.contentfulNewsStory.mainBody}/>
       </div>
     </Layout>
   )
@@ -42,12 +29,17 @@ query ($id: String) {
             raw
             references {
                 __typename
+                ... on ContentfulStaticPage {
+                  contentful_id
+                  title
+                  url
+                }
                 ... on ContentfulAsset {
                    contentful_id
                    gatsbyImageData
                   title
                 }
-            }         
+            }
         }
     }
 }`

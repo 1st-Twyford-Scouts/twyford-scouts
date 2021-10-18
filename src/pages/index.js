@@ -41,6 +41,19 @@ query {
       title
       content {
         raw
+        references {
+          __typename
+          ... on ContentfulStaticPage {
+            contentful_id
+            title
+            url
+          }
+          ... on ContentfulAsset {
+              contentful_id
+              gatsbyImageData
+            title
+          }
+        }
       }
     }
   }
@@ -61,6 +74,11 @@ query {
         raw
         references {
           __typename
+          ... on ContentfulStaticPage {
+            contentful_id
+            title
+            url
+          }
           ... on ContentfulAsset {
               contentful_id
               gatsbyImageData
