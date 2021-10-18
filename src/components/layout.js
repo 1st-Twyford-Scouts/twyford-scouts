@@ -36,7 +36,7 @@ const Layout = ({ children, images }) => {
           }
         }
       }
-        allContentfulStaticPage {
+        allContentfulStaticPage (filter: {linkFromNav: {eq: true}}) {
           nodes {
             buttonText
             url
