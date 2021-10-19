@@ -5,6 +5,8 @@
     border-radius: 5px;
     padding:5px;
     box-shadow: 4px 5px rgba(0,0,0,0.2);
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .introLogo {  
@@ -21,4 +23,6 @@
     padding-left:10px;
     padding-right:10px;
     box-shadow: 4px 5px rgba(0,0,0,0.2);
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
