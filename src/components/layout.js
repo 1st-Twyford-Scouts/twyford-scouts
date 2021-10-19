@@ -17,7 +17,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import "@fontsource/nunito-sans"
 import { Fade } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
-import { Navbar, Container, Nav, NavDropdown, Row, Col } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Layout = ({ children, images }) => {
