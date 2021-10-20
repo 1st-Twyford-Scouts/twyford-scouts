@@ -1,9 +1,14 @@
 import * as React from 'react'
+import TagFilter from './TagFilter'
+import NoticeList from './NoticeList'
 
 const EditNotices = () => {
 
   return (
-      <h1>Notices Listed Here</h1>
+      <div>
+          <TagFilter/>
+          <NoticeList/>
+      </div>
   )
 }
 

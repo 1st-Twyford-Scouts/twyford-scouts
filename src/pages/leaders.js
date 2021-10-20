@@ -20,8 +20,6 @@ const Home = ({ user }) => {
     return <p>Hi, {user.name ? user.name : "friend"}!</p>
   }
 
-const News = () => <p>News</p>
-
 const Leaders = () => {
     if (!isAuthenticated()) {
         login()

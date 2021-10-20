@@ -1,5 +1,8 @@
 import React from "react"
 import { silentAuth } from "./src/utils/auth"
+import { Provider } from "react-redux"
+import { createStore } from "redux"
+import rootReducer from "./src/state/reducers/index"
 
 class SessionCheck extends React.Component {
   constructor(props) {
@@ -27,5 +30,23 @@ class SessionCheck extends React.Component {
 }
 
 export const wrapRootElement = ({ element }) => {
-  return <SessionCheck>{element}</SessionCheck>
+  const initialState = 
+  {
+    tags:
+    {
+      filter: "*",
+      state: "loaded",
+      list: ["Scouts", "MondayScouts", "TuesdayScouts", "Cubs", "Beavers", "Group"]
+    },
+    notices:
+    {
+      selected: "",
+      list: []
+    }
+  }
+  const store = createStore(rootReducer, initialState)
+  return (
+    <Provider store={store}>
+      <SessionCheck>{element}</SessionCheck>
+    </Provider>)
 }
