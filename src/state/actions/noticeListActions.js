@@ -1,8 +1,1 @@
-import { NOTICELIST_SELECTIONCHANGED } from './actionTypes'
-
-export function noticeListSelectionChanged (value) {
-    return {
-        type: NOTICELIST_SELECTIONCHANGED,
-        value
-    }
-}
+export function noticesSelect (value) { return { type: "notices/select", value } }

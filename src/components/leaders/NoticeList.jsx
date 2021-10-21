@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import NoticeListControl from './NoticeListControl'
-import { noticeListSelectionChanged } from '../../state/actions/noticeListActions'
+import { noticesSelect } from '../../state/actions/noticeListActions'
 
 const mapStateToProps = (state) => {
     return {
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 export const mapDispatchToProps = (dispatch) => {
     return {
         onSelectionChanged: event => {
-            dispatch(noticeListSelectionChanged(event.target.value))
+            dispatch(noticesSelect(event.target.value))
         }
     }
 }

@@ -1,5 +1,10 @@
-import tagFilterReducers from "./tagFilterReducers";
+import { combineReducers } from "redux";
+import tagsReducer from "./tagsReducer";
+import noticesReducer from "./noticesReducer";
 
-export default function rootReducer(state, action) {
-    return tagFilterReducers(state, action)
-}
+const rootReducer = combineReducers({
+    tags: tagsReducer,
+    notices: noticesReducer
+})
+
+export default rootReducer;

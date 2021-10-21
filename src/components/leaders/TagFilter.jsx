@@ -1,19 +1,17 @@
 import { connect } from 'react-redux'
 import TagFilterControl from './TagFilterControl'
-import { tagFilterChanged } from '../../state/actions/tagFilterActions'
+import { tagsSelect } from '../../state/actions/tagActions'
 
 const mapStateToProps = (state) => {
     return {
-        value: state.tags.filter,
+        selected: state.tags.selected,
         tags: state.tags.list
     }
 }
 
 export const mapDispatchToProps = (dispatch) => {
     return {
-        onValueChanged: event => {
-            dispatch(tagFilterChanged(event.target.value))
-        }
+        OnTagSelect: event => { dispatch(tagsSelect(event.target.value)) }
     }
 }
 

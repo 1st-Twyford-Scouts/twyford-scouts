@@ -1,4 +1,5 @@
 import React from "react"
+import { graphql } from 'gatsby'
 import { Router } from "@reach/router"
 import { login, logout, isAuthenticated, getProfile, getTokens } from "../utils/auth"
 import { Link } from "gatsby"
@@ -6,6 +7,8 @@ import { StaticImage } from 'gatsby-plugin-image'
 import EditNotices from '../components/leaders/EditNotices'
 import EditNews from '../components/leaders/EditNews'
 import EditStaticPages from '../components/leaders/EditStaticPages'
+import store from '../state/store'
+import { tagsPopulate } from "../state/actions/tagActions"
 
 import {
   container,
@@ -20,11 +23,16 @@ const Home = ({ user }) => {
     return <p>Hi, {user.name ? user.name : "friend"}!</p>
   }
 
-const Leaders = () => {
-    if (!isAuthenticated()) {
-        login()
-        return <p>Redirecting to login...</p>
-    }
+const Leaders = ({data}) => {
+  if (!isAuthenticated()) {
+      login()
+      return <p>Redirecting to login...</p>
+  }
+
+  const state = store.getState();
+  if (state.tags.list.length === 0) {
+    store.dispatch(tagsPopulate(data.allContentfulTag.nodes.map(tag => ({ id: tag.contentful_id, name: tag.name }))))
+  }
 
   const user = getProfile()
   console.log(user)
@@ -60,5 +68,16 @@ const Leaders = () => {
     </div>
     )
 }
+
+export const query = graphql`
+query {
+  allContentfulTag {
+    nodes {
+      contentful_id
+      name
+    }
+  }
+}
+`
 
 export default Leaders
