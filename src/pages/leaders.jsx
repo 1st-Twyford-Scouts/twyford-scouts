@@ -1,3 +1,5 @@
+// @ts-check
+
 import React from "react"
 import { graphql } from 'gatsby'
 import { Router } from "@reach/router"
@@ -8,7 +10,7 @@ import EditNotices from '../components/leaders/EditNotices'
 import EditNews from '../components/leaders/EditNews'
 import EditStaticPages from '../components/leaders/EditStaticPages'
 import store from '../state/store'
-import { tagsPopulate } from "../state/actions/tagActions"
+import { populate } from '../state/reducers/tagsReducer'
 
 import {
   container,
@@ -31,7 +33,7 @@ const Leaders = ({data}) => {
 
   const state = store.getState();
   if (state.tags.list.length === 0) {
-    store.dispatch(tagsPopulate(data.allContentfulTag.nodes.map(tag => ({ id: tag.contentful_id, name: tag.name }))))
+    store.dispatch(populate(data.allContentfulTag.nodes.map(tag => ({ id: tag.contentful_id, name: tag.name }))))
   }
 
   const user = getProfile()

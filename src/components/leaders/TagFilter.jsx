@@ -1,6 +1,8 @@
+// @ts-check
+
 import { connect } from 'react-redux'
 import TagFilterControl from './TagFilterControl'
-import { tagsSelect } from '../../state/actions/tagActions'
+import { select } from '../../state/reducers/tagsReducer'
 
 const mapStateToProps = (state) => {
     return {
@@ -11,7 +13,7 @@ const mapStateToProps = (state) => {
 
 export const mapDispatchToProps = (dispatch) => {
     return {
-        OnTagSelect: event => { dispatch(tagsSelect(event.target.value)) }
+        OnSelect: event => { dispatch(select(event.target.value)) }
     }
 }
 

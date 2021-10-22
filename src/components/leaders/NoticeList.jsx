@@ -1,6 +1,8 @@
+// @ts-check
+
 import { connect } from 'react-redux'
 import NoticeListControl from './NoticeListControl'
-import { noticesSelect } from '../../state/actions/noticeListActions'
+import { select } from '../../state/reducers/noticesReducer'
 
 const mapStateToProps = (state) => {
     return {
@@ -11,9 +13,7 @@ const mapStateToProps = (state) => {
 
 export const mapDispatchToProps = (dispatch) => {
     return {
-        onSelectionChanged: event => {
-            dispatch(noticesSelect(event.target.value))
-        }
+        onSelect: event => { dispatch(select(event.target.value)) }
     }
 }
 
