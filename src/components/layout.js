@@ -40,93 +40,103 @@ const Layout = ({ children, images }) => {
           }
         }
       }
-        allContentfulStaticPage (filter: {linkFromNav: {eq: true}}) {
-          nodes {
-            buttonText
-            url
-          }
+      allContentfulStaticPage (filter: {linkFromNav: {eq: true}}) {
+        nodes {
+          buttonText
+          url
+          externalUri
         }
-        contentfulSection(primaryTag: {eq: "group"}) {
-          backgroundImages {
-            gatsbyImageData(width: 1280)
-            title
-          }       
-        }
-        contentfulAsset(title: {eq: "canoes-jpg"}) {
+      }
+      contentfulSection(primaryTag: {eq: "group"}) {
+        backgroundImages {
           gatsbyImageData(width: 1280)
           title
-        }        
-      }`)
-
-      const slideShowProps = {
-        duration: 20000,
-        arrows: false,
-        canSwipe: false
+        }       
       }
+      contentfulAsset(title: {eq: "canoes-jpg"}) {
+        gatsbyImageData(width: 1280)
+        title
+      }        
+    }`)
 
-      return (
-        <div className={container}>
-          {images && images.length > 0 &&
-            <Fade {...slideShowProps}>
-            {images.map(image =>
-              <div className="each-fade">
-                <GatsbyImage className={backgroundImage} alt={image.title} image={getImage(image)} />
-              </div>
-              )}
-            </Fade>
-          }
-          {(!images || images.length === 0) &&
-            <Fade {...slideShowProps}>
-            {query.contentfulSection.backgroundImages.map(image =>
-              <div className="each-fade">
-                <GatsbyImage className={backgroundImage} alt={image.title} image={getImage(image)} />
-              </div>
-              )}
-            </Fade>
-          }
-          <Navbar className={topBar + " " + navItemContainer} variant="dark" expand="lg">
-                <Navbar.Brand className={navItem + " " + navItemFill}>
-                  <Link to="/" className={navItemFill} activeClassName={navItemCurrent} >
-                  <StaticImage
-                    className={navSubItem}
-                    alt="1st Twyford Scouts"
-                    src="../images/Scouts1stTwyfordLinearWhite96px.png"/>
-                  </Link>
-                </Navbar.Brand>
-                <Navbar.Collapse id="basic-navbar-nav" className={navItemContainer}>
-                  <Nav className={navItemContainer}>
-                    {            
-                      query.allContentfulSection.nodes.map(node => (
-                          <Nav.Item className={navItem + " " + navItemFill}>
-                            <Link className={navItemFill} activeClassName={navItemCurrent} key={node.primaryTag} to={"/" + node.primaryTag} >
-                              <GatsbyImage className={navSubItem} alt={node.name} image={getImage(node.logo)}/>
-                            </Link>
-                          </Nav.Item>
+    const slideShowProps = {
+      duration: 20000,
+      arrows: false,
+      canSwipe: false
+    }
+
+    return (
+      <div className={container}>
+        {images && images.length > 0 &&
+          <Fade {...slideShowProps}>
+          {images.map(image =>
+            <div className="each-fade">
+              <GatsbyImage className={backgroundImage} alt={image.title} image={getImage(image)} />
+            </div>
+            )}
+          </Fade>
+        }
+        {(!images || images.length === 0) &&
+          <Fade {...slideShowProps}>
+          {query.contentfulSection.backgroundImages.map(image =>
+            <div className="each-fade">
+              <GatsbyImage className={backgroundImage} alt={image.title} image={getImage(image)} />
+            </div>
+            )}
+          </Fade>
+        }
+        <Navbar className={topBar + " " + navItemContainer} variant="dark" expand="lg">
+              <Navbar.Brand className={navItem + " " + navItemFill}>
+                <Link to="/" className={navItemFill} activeClassName={navItemCurrent} >
+                <StaticImage
+                  className={navSubItem}
+                  alt="1st Twyford Scouts"
+                  src="../images/Scouts1stTwyfordLinearWhite96px.png"/>
+                </Link>
+              </Navbar.Brand>
+              <Navbar.Collapse id="basic-navbar-nav" className={navItemContainer}>
+                <Nav className={navItemContainer}>
+                  {            
+                    query.allContentfulSection.nodes.map(node => (
+                        <Nav.Item className={navItem + " " + navItemFill}>
+                          <Link className={navItemFill} activeClassName={navItemCurrent} key={node.primaryTag} to={"/" + node.primaryTag} >
+                            <GatsbyImage className={navSubItem} alt={node.name} image={getImage(node.logo)}/>
+                          </Link>
+                        </Nav.Item>
+                    ))              
+                  }
+                  <NavDropdown title="More" id="basic-nav-dropdown" className={navItemFill}>
+                    <NavDropdown.Item className={navItem}>
+                      <Link to="/how-to-contact-us" >
+                        <div>Contact Us</div>
+                      </Link>
+                    </NavDropdown.Item>
+                    {
+                      query.allContentfulStaticPage.nodes.map(node => (
+                        <div>
+                          {node.externalUri && 
+                              <NavDropdown.Item className={navItem} href={node.externalUri}>
+                                <div>{node.buttonText}</div>
+                              </NavDropdown.Item>
+                          }
+                          {!node.externalUri &&
+                              <NavDropdown.Item className={navItem}>
+                                <Link key={node.url} to={"/" + node.url} >
+                                  <div>{node.buttonText}</div>
+                                </Link>
+                              </NavDropdown.Item>
+                            }                            
+                        </div>
                       ))              
                     }
-                    <NavDropdown title="More" id="basic-nav-dropdown" className={navItemFill}>
-                      <NavDropdown.Item className={navItem}>
-                        <Link to="/how-to-contact-us" >
-                          <div>Contact Us</div>
-                        </Link>
-                      </NavDropdown.Item>
-                      {
-                        query.allContentfulStaticPage.nodes.map(node => (
-                          <NavDropdown.Item className={navItem}>
-                            <Link key={node.url} to={"/" + node.url} >
-                            <div>{node.buttonText}</div>
-                            </Link>
-                          </NavDropdown.Item>
-                        ))              
-                      }
-                    </NavDropdown>
-                  </Nav>
-                </Navbar.Collapse>
-          </Navbar>
-          <main className={content}>
-            {children}
-          </main>
-        </div>    
+                  </NavDropdown>
+                </Nav>
+              </Navbar.Collapse>
+        </Navbar>
+        <main className={content}>
+          {children}
+        </main>
+      </div>    
   )
 }
 
