@@ -2,7 +2,6 @@
 
 import React from "react"
 import { graphql } from 'gatsby'
-import { Router } from "@reach/router"
 import { login, logout, isAuthenticated, getProfile, getTokens } from "../utils/auth"
 import { Link } from "gatsby"
 import { StaticImage } from 'gatsby-plugin-image'
@@ -61,12 +60,6 @@ const Leaders = ({data}) => {
               <img className={profilePicture} src={user.picture} alt={user.name}/>
             </div>
         </nav>
-        <Router>
-        <Home path="/leaders" user={user} />
-        <EditNotices path="/leaders/notices" />
-        <EditNews path="/leaders/news" />
-        <EditStaticPages path="/leaders/static-pages" />
-        </Router>
     </div>
     )
 }
