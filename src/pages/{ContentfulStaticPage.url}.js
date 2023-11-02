@@ -7,7 +7,7 @@ import RenderRichText from '../components/RenderRichText.jsx'
 const StaticPage = ({data}) => {
 
   return (
-    <Layout pageTitle={data.contentfulStaticPage.title}>
+    <Layout images="">
       <div className={generalTextBox}>
         <RenderRichText content={data.contentfulStaticPage.content}/>
       </div>

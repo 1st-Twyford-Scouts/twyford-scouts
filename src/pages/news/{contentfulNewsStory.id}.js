@@ -8,7 +8,7 @@ import RenderRichText from '../../components/RenderRichText.jsx'
 const NewsPage = ({data}) => {
 
   return (
-    <Layout pageTitle={data.contentfulNewsStory.title}>
+    <Layout images="">
       <GatsbyImage alt={data.contentfulNewsStory.title} image={getImage(data.contentfulNewsStory.thumbNailImage)}/>
       <h1>{data.contentfulNewsStory.title}</h1>
       <div className={newsMain}>

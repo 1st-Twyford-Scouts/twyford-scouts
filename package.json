@@ -16,8 +16,6 @@
   },
   "dependencies": {
     "@fontsource/nunito-sans": "^5.0.8",
-    "@reduxjs/toolkit": "^1.9.6",
-    "auth0-js": "^9.22.1",
     "bootstrap": "^5.3.2",
     "gatsby": "^5.12.4",
     "gatsby-plugin-gatsby-cloud": "^5.12.1",
@@ -28,10 +26,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.1.2",
     "react-slideshow-image": "^4.2.1",
-    "redux": "^4.2.1",
-    "rxjs": "^7.8.1",
     "typescript-plugin-css-modules": "^5.0.1"
   },
   "devDependencies": {

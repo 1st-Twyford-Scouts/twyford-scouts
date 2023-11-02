@@ -22,7 +22,7 @@ const ContactPage = () => {
         }
       }`)
   return (
-    <Layout pageTitle="Contact Us">
+    <Layout images="">
         {
             contacts.allContentfulContact.group.map(group =>(
                 <div>
