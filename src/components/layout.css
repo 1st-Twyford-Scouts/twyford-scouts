@@ -22,3 +22,7 @@ body {
     margin: 0px;
     max-width: 100%;
   }
+
+  main {
+    z-index: 50 !important;
+  }
