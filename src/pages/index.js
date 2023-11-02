@@ -32,7 +32,7 @@ query {
   }
   allContentfulNotice(
     filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: "group"}}}}}
-    sort: {order: ASC, fields: priority}
+    sort: { priority: ASC }
   ) {
     nodes {
       contentful_id
@@ -59,7 +59,7 @@ query {
   }
   allContentfulNewsStory(
     filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: "group"}}}}}
-    sort: {order: DESC, fields: createdAt}
+    sort: { createdAt: DESC }
     limit: 10
   ) {
     nodes {

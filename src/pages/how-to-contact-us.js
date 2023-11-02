@@ -10,7 +10,7 @@ const ContactPage = () => {
     const contacts = useStaticQuery(graphql`
     query {
         allContentfulContact {
-          group(field: category) {
+          group(field: {category: SELECT}) {
             nodes {
               email
               name

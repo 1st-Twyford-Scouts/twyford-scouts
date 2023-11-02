@@ -45,7 +45,7 @@ query ($primaryTag: String) {
   }
   allContentfulNotice(
     filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: $primaryTag}}}}}
-    sort: {order: ASC, fields: priority}
+    sort: {priority: ASC}
   ) {
     nodes {
       contentful_id
@@ -72,7 +72,7 @@ query ($primaryTag: String) {
   }
   allContentfulNewsStory(
     filter: {metadata: {tags: {elemMatch: {contentful_id: {eq: $primaryTag}}}}}
-    sort: {order: DESC, fields: createdAt}
+    sort: {createdAt: DESC}
     limit: 10
   ) {
     nodes {

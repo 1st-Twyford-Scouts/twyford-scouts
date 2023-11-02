@@ -24,7 +24,7 @@ const Layout = ({ children, images }) => {
     const query = useStaticQuery(graphql`
     query {
       allContentfulSection(
-        sort: {order: ASC, fields: primaryTag}
+        sort: {primaryTag: ASC}
         filter: {linkFromNav: {eq: true}}
       ) {
         nodes {
