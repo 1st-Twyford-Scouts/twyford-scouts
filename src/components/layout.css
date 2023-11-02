@@ -3,7 +3,7 @@ html {
 }
 
 h1 {
-    color: white;
+    color: white !important;
     background-color: #7413DC;
     padding-left: 20px;
     margin-left: -20px;
